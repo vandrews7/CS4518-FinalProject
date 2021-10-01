@@ -76,19 +76,21 @@
             android:id="@+id/ownerTxt"
             android:layout_width="104dp"
             android:layout_height="38dp"
+            android:layout_marginBottom="16dp"
             android:text="Assignment Owner:"
             android:textAlignment="center"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="133dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/ownerName"
             android:layout_width="300dp"
             android:layout_height="29dp"
+            android:layout_marginBottom="1dp"
             android:text="Owner Name"
             android:textAlignment="center"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="128dp" />
+            app:layout_constraintBottom_toTopOf="@+id/ownerEmail"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/ownerEmail"
@@ -96,8 +98,8 @@
             android:layout_height="29dp"
             android:text="Owner Email"
             android:textAlignment="center"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="157dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/activityTitleTxt"
+        android:layout_width="201dp"
+        android:layout_height="57dp"
+        android:text="Activity Title"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="106dp" />
+
+    <TextView
+        android:id="@+id/detailsDueDateTxt"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
+        android:text="Due Date:"
+        tools:layout_editor_absoluteY="61dp" />
+
+    <TextView
+        android:id="@+id/detailsDueDate"
+        android:layout_width="307dp"
+        android:layout_height="30dp"
+        android:text="<due date>"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="61dp" />
+
+    <TextView
+        android:id="@+id/detailsSubjectTxt"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
+        android:text="Subject:"
+        tools:layout_editor_absoluteY="113dp" />
+
+    <TextView
+        android:id="@+id/detailsSubject"
+        android:layout_width="307dp"
+        android:layout_height="30dp"
+        android:text="<activity subject>"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="113dp" />
+
+    <TextView
+        android:id="@+id/detailsTxt"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
+        android:text="Details/Notes:"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="179dp" />
+
+    <EditText
+        android:id="@+id/detailsNotes"
+        android:layout_width="407dp"
+        android:layout_height="194dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="211dp" />
+
+    <TextView
+        android:id="@+id/sharedWith"
+        android:layout_width="96dp"
+        android:layout_height="30dp"
+        android:text="Shared With:"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="426dp" />
+
+    <TextView
+        android:id="@+id/collaboratorEmail"
+        android:layout_width="400dp"
+        android:layout_height="32dp"
+        android:text="<collaborator email>"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="456dp" />
+</android.support.constraint.ConstraintLayout>
