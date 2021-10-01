@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CS4518-FinalProject</string>
+    <string name="assignmentTitle">Assignment Title</string>
+    <string name="assignmentSubject">Assignment Subject</string>
 </resources>
