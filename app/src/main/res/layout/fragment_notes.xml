@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/notesTxt"
+        android:layout_width="188dp"
+        android:layout_height="38dp"
+        android:text="Notes"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="410dp"
+        android:layout_height="692dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="39dp" />
+</android.support.constraint.ConstraintLayout>
