@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#76A39F">
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="316dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="48dp"
+        android:text="APP NAME"
+        android:textAlignment="center"
+        android:textColor="#000002"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/createAcctBtn"
+        android:layout_width="167dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="122dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Create Account"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="167dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="122dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appName" />
+</android.support.constraint.ConstraintLayout>

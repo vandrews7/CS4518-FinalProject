@@ -2,4 +2,6 @@
     <string name="app_name">CS4518-FinalProject</string>
     <string name="assignmentTitle">Assignment Title</string>
     <string name="assignmentSubject">Assignment Subject</string>
+    <string name="inputEmail">Email</string>
+    <string name="inputPassword">Password</string>
 </resources>
