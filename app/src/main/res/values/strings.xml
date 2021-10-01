@@ -4,4 +4,6 @@
     <string name="assignmentSubject">Assignment Subject</string>
     <string name="inputEmail">Email</string>
     <string name="inputPassword">Password</string>
+    <string name="birthday">Birthday: MM/DD/YYYY</string>
+    <string name="newPassword">New Password</string>
 </resources>
