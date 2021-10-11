@@ -9,4 +9,6 @@ import com.example.cs4518_finalproject.User
 @Database(entities = [Assignment::class, User::class], version = 1)
 @TypeConverters(DatabaseTypeConverters::class)
 abstract class MainDatabase : RoomDatabase() {
+
+    abstract fun assignmentDao(): AssignmentDao
 }
