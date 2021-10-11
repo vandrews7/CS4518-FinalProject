@@ -38,7 +38,7 @@ class OpeningFragment: Fragment(){
         fun loadCreateAcct(fragment: Fragment){
             val transaction = activity!!.supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, CreateAcctFragment())
-            transaction.disallowAddToBackStack()
+            transaction.addToBackStack(null)
             transaction.commit()
         }
 

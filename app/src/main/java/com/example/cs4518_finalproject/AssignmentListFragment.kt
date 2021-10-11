@@ -16,7 +16,7 @@ private const val TAG = "AssignmentFragment"
 private const val REQUEST_CODE = 0
 private const val ARG_ASSIGN_ID = "assignment_id"
 
-class GameFragment: Fragment(){
+class AssignmentListFragment: Fragment(){
 
     private val assignmentViewModel: AssignmentViewModel by lazy {
         ViewModelProviders.of(this).get(AssignmentViewModel::class.java)
