@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 
-class LoginFragment : Fragment(){
+class LoginFragment : Fragment() {
 
     private val loginViewModel : LoginViewModel by lazy {
         ViewModelProviders.of(this).get(LoginViewModel::class.java)
@@ -45,6 +45,12 @@ class LoginFragment : Fragment(){
         login.setOnClickListener { loadHome() }
 
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+
     }
 
 }

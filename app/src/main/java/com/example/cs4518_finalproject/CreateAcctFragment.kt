@@ -12,8 +12,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 
-private const val ARG_ACCT_ID = "acct_id"
-
 class CreateAcctFragment : Fragment() {
 
     private val createAcctViewModel : CreateAcctViewModel by lazy {
