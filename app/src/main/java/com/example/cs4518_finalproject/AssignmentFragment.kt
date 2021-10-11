@@ -1,6 +1,6 @@
 package com.example.cs4518_finalproject
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 
 private const val TAG = "AssignmentFragment"
 private const val REQUEST_CODE = 0

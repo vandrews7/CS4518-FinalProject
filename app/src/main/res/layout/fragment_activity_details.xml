@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         android:id="@+id/detailsDueDate"
         android:layout_width="307dp"
         android:layout_height="30dp"
-        android:text="<due date>"
+        android:text="due date"
         tools:layout_editor_absoluteX="99dp"
         tools:layout_editor_absoluteY="61dp" />
 
@@ -42,7 +42,7 @@
         android:id="@+id/detailsSubject"
         android:layout_width="307dp"
         android:layout_height="30dp"
-        android:text="<activity subject>"
+        android:text="activity subject"
         tools:layout_editor_absoluteX="99dp"
         tools:layout_editor_absoluteY="113dp" />
 
@@ -68,7 +68,7 @@
         android:id="@+id/collaboratorEmail"
         android:layout_width="400dp"
         android:layout_height="32dp"
-        android:text="<collaborator email>"
+        android:text="collaborator email"
         tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="485dp" />
 
@@ -90,4 +90,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsSubject" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
