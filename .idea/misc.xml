@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/layout/fragment_notes.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/fragment_opening.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_shared.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_to_do.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_to_do.xml" value="0.25" />
       </map>
     </option>
   </component>
