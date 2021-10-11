@@ -13,10 +13,6 @@ class AssignmentViewModel: ViewModel(){
     override fun onCleared() {
         super.onCleared()
         Log.i(TAG, "AssignmentViewModel instance is about to be destroyed")
-    }git
-
-    private var
-
-
+    }
 
 }
