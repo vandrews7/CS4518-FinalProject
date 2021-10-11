@@ -73,17 +73,21 @@ class GameFragment: Fragment(){
     override fun onStart() {
         super.onStart()
 
-        val titleWatcher = object : TextWatcher{
-            override fun beforeTextChanged(sequence: CharSequence?,
-                                           start: Int,
-                                           count: Int,
-                                           after: Int) {
+        val titleWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
             }
 
-            override fun onTextChanged(sequence: CharSequence?,
-                                       start: Int,
-                                       before: Int,
-                                       count: Int) {
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
                 assignment.title = sequence.toString()
             }
 
@@ -91,17 +95,21 @@ class GameFragment: Fragment(){
         }
         assignmentTitle.addTextChangedListener(titleWatcher)
 
-        val subjectWatcher = object : TextWatcher{
-            override fun beforeTextChanged(sequence: CharSequence?,
-                                           start: Int,
-                                           count: Int,
-                                           after: Int) {
+        val subjectWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
             }
 
-            override fun onTextChanged(sequence: CharSequence?,
-                                       start: Int,
-                                       before: Int,
-                                       count: Int) {
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
                 assignment.subject = sequence.toString()
             }
 
@@ -109,17 +117,21 @@ class GameFragment: Fragment(){
         }
         subjectText.addTextChangedListener(subjectWatcher)
 
-        val editDateWatcher = object : TextWatcher{
-            override fun beforeTextChanged(sequence: CharSequence?,
-                                           start: Int,
-                                           count: Int,
-                                           after: Int) {
+        val editDateWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
             }
 
-            override fun onTextChanged(sequence: CharSequence?,
-                                       start: Int,
-                                       before: Int,
-                                       count: Int) {
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
                 assignment.dueDate = sequence.toString()
             }
 
@@ -128,10 +140,10 @@ class GameFragment: Fragment(){
         editDate.addTextChangedListener(editDateWatcher)
 
 
-        checkBox.apply{
-            setOnCheckedChangeListener {_, isChecked->
+        checkBox.apply {
+            setOnCheckedChangeListener { _, isChecked ->
                 assignment.isCompleted = isChecked
             }
+        }
     }
-
 }
