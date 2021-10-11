@@ -66,10 +66,11 @@
             android:id="@+id/shareBtn"
             android:layout_width="104dp"
             android:layout_height="55dp"
+            android:layout_marginEnd="4dp"
             android:text="Share Assignment "
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="305dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -85,7 +86,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addAssignmentBtn"
         android:layout_width="147dp"
         android:layout_height="43dp"
         android:layout_marginStart="132dp"
