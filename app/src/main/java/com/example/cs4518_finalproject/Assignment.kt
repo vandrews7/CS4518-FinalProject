@@ -9,6 +9,6 @@ data class Assignment(@PrimaryKey val id: UUID = UUID.randomUUID(),
 var title: String = "",
 var subject: String = "",
 var dueDate: String = "",
-var isComplete: Boolean = false){
+var isCompleted: Boolean = false){
 
 }
