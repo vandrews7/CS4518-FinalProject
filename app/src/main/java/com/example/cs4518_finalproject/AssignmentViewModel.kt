@@ -1,7 +1,7 @@
 package com.example.cs4518_finalproject
 
-import android.arch.lifecycle.ViewModel
 import android.util.Log
+import androidx.lifecycle.ViewModel
 
 private const val TAG = "AssignmentViewModel"
 
@@ -13,7 +13,7 @@ class AssignmentViewModel: ViewModel(){
     override fun onCleared() {
         super.onCleared()
         Log.i(TAG, "AssignmentViewModel instance is about to be destroyed")
-    }
+    }git
 
     private var
 
