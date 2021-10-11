@@ -1,6 +1,8 @@
 package com.example.cs4518_finalproject
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -54,9 +56,82 @@ class GameFragment: Fragment(){
         subjectText = view.findViewById(R.id.subjectTxt) as EditText
         shareBtn = view.findViewById(R.id.shareBtn) as Button
         assignmentsTab = view.findViewById(R.id.assignmentsTab) as TextView
+        addAssignmentBtn = view.findViewById(R.id.addAssignmentBtn) as Button
+        currentDate = view.findViewById(R.id.currentDate) as TextView
+
+        shareBtn.setOnClickListener{
+            //TODO: send assignment details to another user
+        }
+
+        addAssignmentBtn.setOnClickListener {
+            //TODO: add a new assignment
+        }
 
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        val titleWatcher = object : TextWatcher{
+            override fun beforeTextChanged(sequence: CharSequence?,
+                                           start: Int,
+                                           count: Int,
+                                           after: Int) {
+            }
+
+            override fun onTextChanged(sequence: CharSequence?,
+                                       start: Int,
+                                       before: Int,
+                                       count: Int) {
+                assignment.title = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) {}
+        }
+        assignmentTitle.addTextChangedListener(titleWatcher)
+
+        val subjectWatcher = object : TextWatcher{
+            override fun beforeTextChanged(sequence: CharSequence?,
+                                           start: Int,
+                                           count: Int,
+                                           after: Int) {
+            }
+
+            override fun onTextChanged(sequence: CharSequence?,
+                                       start: Int,
+                                       before: Int,
+                                       count: Int) {
+                assignment.subject = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) {}
+        }
+        subjectText.addTextChangedListener(subjectWatcher)
+
+        val editDateWatcher = object : TextWatcher{
+            override fun beforeTextChanged(sequence: CharSequence?,
+                                           start: Int,
+                                           count: Int,
+                                           after: Int) {
+            }
+
+            override fun onTextChanged(sequence: CharSequence?,
+                                       start: Int,
+                                       before: Int,
+                                       count: Int) {
+                assignment.dueDate = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) {}
+        }
+        editDate.addTextChangedListener(editDateWatcher)
+
+
+        checkBox.apply{
+            setOnCheckedChangeListener {_, isChecked->
+                assignment.isCompleted = isChecked
+            }
+    }
 
 }
