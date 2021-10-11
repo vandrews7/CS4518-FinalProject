@@ -47,7 +47,7 @@ class GameFragment: Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_assignments, container, false)
+        val view = inflater.inflate(R.layout.fragment_assignments_list, container, false)
 
         assignmentTitle = view.findViewById(R.id.assignmentTitle) as EditText
         checkBox = view.findViewById(R.id.checkBox) as CheckBox
@@ -68,6 +68,10 @@ class GameFragment: Fragment(){
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onStart() {
@@ -123,8 +127,7 @@ class GameFragment: Fragment(){
                 start: Int,
                 count: Int,
                 after: Int
-            ) {
-            }
+            ) { }
 
             override fun onTextChanged(
                 sequence: CharSequence?,
@@ -135,7 +138,7 @@ class GameFragment: Fragment(){
                 assignment.dueDate = sequence.toString()
             }
 
-            override fun afterTextChanged(sequence: Editable?) {}
+            override fun afterTextChanged(sequence: Editable?) { }
         }
         editDate.addTextChangedListener(editDateWatcher)
 
