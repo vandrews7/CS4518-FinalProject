@@ -79,7 +79,7 @@ class AssignmentListFragment: Fragment(){
         private lateinit var asgn: Assignment
 
         private val title: TextView = itemView.findViewById(R.id.assignmentTitle)
-        private val checkBox: CheckBox = itemView.findViewById(R.id.checkBox) //TODO make this update after checked in details
+        private val checkBox: CheckBox = itemView.findViewById(R.id.checkBox)
         private val date: TextView = itemView.findViewById(R.id.date)
         private val subject: TextView = itemView.findViewById(R.id.subjectTxt)
 

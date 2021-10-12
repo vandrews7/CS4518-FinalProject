@@ -7,8 +7,9 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="370dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -17,7 +18,7 @@
         android:layout_width="174dp"
         android:layout_height="35dp"
         android:layout_marginStart="3dp"
-        android:text="Assignments due on"
+        android:text="Assignments due on:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
@@ -27,40 +28,18 @@
         android:layout_width="185dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:text="selected date"
+        android:text=""
         android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/dueOnTxt"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="406dp"
-        android:layout_height="83dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="424dp">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendarRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="324dp"
+        android:layout_marginStart="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dueOnTxt" />
 
-        <TextView
-            android:id="@+id/calendarAssignmentTitle"
-            android:layout_width="411dp"
-            android:layout_height="45dp"
-            android:text="Assignment Title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/completed"
-            android:layout_width="96dp"
-            android:layout_height="34dp"
-            android:text="Completed:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarAssignmentTitle" />
-
-        <TextView
-            android:id="@+id/completionStatus"
-            android:layout_width="87dp"
-            android:layout_height="35dp"
-            android:text="YES/NO"
-            android:textAlignment="center"
-            app:layout_constraintStart_toEndOf="@+id/completed"
-            app:layout_constraintTop_toBottomOf="@+id/calendarAssignmentTitle" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

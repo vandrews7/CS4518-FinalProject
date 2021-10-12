@@ -22,7 +22,6 @@ private const val TAG = "ToDoFragment"
 class ToDoFragment : Fragment(){
 
     private lateinit var toDoRecyclerView: RecyclerView
-    private lateinit var toDo: ToDo
     private lateinit var toDoTxt: TextView
     private lateinit var addToDoBtn: Button
     private var adapter: ToDoAdapter? = ToDoAdapter(emptyList())
