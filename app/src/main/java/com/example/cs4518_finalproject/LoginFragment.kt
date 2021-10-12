@@ -94,10 +94,10 @@ class LoginFragment : Fragment() {
         login.setOnClickListener {
             val loginValid: LiveData<User?> = loginViewModel.login(emailString, passString)
             if(loginValid != null) {
-                // enable button
+                //TODO: enable button
             }
             else {
-                // disable button
+                //TODO: disable button
             }
             loadHome()
         }
