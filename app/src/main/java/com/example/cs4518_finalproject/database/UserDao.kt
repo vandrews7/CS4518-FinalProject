@@ -23,8 +23,8 @@ interface UserDao {
     fun getUsername(email: String): String?
 
     @Insert
-    fun addUser(user: User) //TODO: figure out how to add a user to the db user table
+    fun addUser(user: User)
 
     @Update
-    fun updatePassword(user:User, newPassword: String) //TODO: figure out how to update a password in the user db table
+    fun updateUser(user:User)
 }

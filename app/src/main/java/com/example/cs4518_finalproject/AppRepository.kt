@@ -24,17 +24,14 @@ class AppRepository private constructor(context: Context) {
     fun getUser(email: String): LiveData<User?> = userDao.getUser(email)
     fun getUsername(email: String): String? = userDao.getUsername(email)
     fun addUser(user: User) = userDao.addUser(user)
-    fun updatePassword(user: User, password: String) = userDao.updatePassword(user, password)
+    fun updateUser(user: User) = userDao.updateUser(user)
 
     private val assignmentDao = database.assignmentDao()
 
     fun getAssignments() = assignmentDao.getAssignments()
     fun getAssignment(id: UUID) = assignmentDao.getAssignment(id)
     fun addAssignment(a: Assignment) = assignmentDao.addAssignment(a)
-    fun updateTitle(a: Assignment, title: String) = assignmentDao.updateTitle(a, title)
-    fun updateSubject(a: Assignment, subject: String) = assignmentDao.updateSubject(a, subject)
-    fun updateDate(a: Assignment, dueDate: String) = assignmentDao.updateDate(a, dueDate)
-    fun updateStatus(a: Assignment, isCompleted: Boolean) = assignmentDao.updateStatus(a, isCompleted)
+    fun updateAssignment(a: Assignment) = assignmentDao.updateAssignment(a)
 
     companion object {
         private var INSTANCE: AppRepository? = null
