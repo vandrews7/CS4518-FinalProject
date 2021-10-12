@@ -8,10 +8,12 @@ private const val TAG = "LoginViewModel"
 class LoginViewModel(): ViewModel(){
 
     private val appRepository = AppRepository.get()
-    private val userListLiveData = appRepository.getUsers()
-    private val assignmentListLiveData = appRepository.getAssignments()
-    private val sharedListLiveData = appRepository.getAllShared()
-    private val todoListLiveData = appRepository.getToDos()
+    val userListLiveData = appRepository.getUsers()
+    val assignmentListLiveData = appRepository.getAssignments()
+    val sharedListLiveData = appRepository.getAllShared()
+    val todoListLiveData = appRepository.getToDos()
+
+    fun login(email: String, password: String) = appRepository.login(email, password)
 
     init {
         Log.i(TAG, "LoginViewModel instance created")

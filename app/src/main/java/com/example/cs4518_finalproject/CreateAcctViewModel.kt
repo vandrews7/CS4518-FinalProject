@@ -8,10 +8,10 @@ private const val TAG = "CreateAcctViewModel"
 class CreateAcctViewModel(): ViewModel(){
 
     private val appRepository = AppRepository.get()
-    private val userListLiveData = appRepository.getUsers()
-    private val assignmentListLiveData = appRepository.getAssignments()
-    private val sharedListLiveData = appRepository.getAllShared()
-    private val todoListLiveData = appRepository.getToDos()
+    val userListLiveData = appRepository.getUsers()
+    val assignmentListLiveData = appRepository.getAssignments()
+    val sharedListLiveData = appRepository.getAllShared()
+    val todoListLiveData = appRepository.getToDos()
 
     init {
         Log.i(TAG, "CreateAcctViewModel instance created")

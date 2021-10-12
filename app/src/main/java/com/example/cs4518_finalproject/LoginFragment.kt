@@ -42,7 +42,9 @@ class LoginFragment : Fragment() {
 
         //TODO: if email and pwd don't match existing user -> disable button
         //TODO: if email and pwd match existing user -> enable button:
-        login.setOnClickListener { loadHome() }
+        login.setOnClickListener {
+            loadHome()
+        }
 
         return view
     }
