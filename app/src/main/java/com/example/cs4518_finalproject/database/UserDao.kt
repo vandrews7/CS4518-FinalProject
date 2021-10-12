@@ -26,5 +26,5 @@ interface UserDao {
     fun addUser(user: User)
 
     @Update
-    fun updateUser(user:User)
+    fun updateUser(user: User)
 }
