@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 private const val TAG = "HomeViewModel"
 
 class HomeViewModel(): ViewModel() {
+
+    private val appRepository = AppRepository.get()
+
     init {
         Log.i(TAG, "HomeViewModel instance created")
     }
