@@ -10,36 +10,29 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
 import java.util.*
+
+private const val TAG = "AssignmentListFragment"
 
 class AssignmentListFragment: Fragment(){
 
-    private val assignmentViewModel: AssignmentViewModel by lazy {
-        ViewModelProviders.of(this).get(AssignmentViewModel::class.java)
-    }
+    private lateinit var asgnRecyclerView: RecyclerView
+    private lateinit var asgn: Assignment
+    private lateinit var assignmentTxt: TextView
+    private lateinit var addAsgnBtn: Button
+    private lateinit var date: TextView
+    private var adapter: AssignmentAdapter? = AssignmentAdapter(emptyList())
 
-    private lateinit var assignment: Assignment
-    private lateinit var assignmentTitle: EditText
-    private lateinit var checkBox: CheckBox
-    private lateinit var dueDateText: TextView
-    private lateinit var editDate: EditText
-    private lateinit var subjectText: EditText
-    private lateinit var shareBtn: Button
-    private lateinit var assignmentsTab: TextView
-    private lateinit var addAssignmentBtn: Button
-    private lateinit var currentDate: TextView
-   // TODO private lateinit var asgnRecyclerView: RecyclerView
+    private val assignmentListViewModel: AssignmentListViewModel by lazy {
+       ViewModelProviders.of(this).get(AssignmentListViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        assignment = Assignment()
-    }
-
-    companion object {
-        fun newInstance(): AssignmentListFragment{
-            return AssignmentListFragment()
-        }
+        Log.d(TAG, "Total assignments") //TODO link database for size
     }
 
     override fun onCreateView(
@@ -47,109 +40,79 @@ class AssignmentListFragment: Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_assignments_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_assignments_list, container,false)
+        asgnRecyclerView =
+            view.findViewById(R.id.assignmentsRecyclerView) as RecyclerView
+        asgnRecyclerView.layoutManager = LinearLayoutManager(context)
+        asgnRecyclerView.adapter = adapter
 
-        assignmentTitle = view.findViewById(R.id.assignmentTitle) as EditText
-        checkBox = view.findViewById(R.id.checkBox) as CheckBox
-        dueDateText = view.findViewById(R.id.dueDateTxt) as TextView
-        editDate = view.findViewById(R.id.editDate) as EditText
-        subjectText = view.findViewById(R.id.subjectTxt) as EditText
-        shareBtn = view.findViewById(R.id.shareBtn) as Button
-        assignmentsTab = view.findViewById(R.id.assignmentsTab) as TextView
-        addAssignmentBtn = view.findViewById(R.id.addAssignmentBtn) as Button
-        currentDate = view.findViewById(R.id.currentDate) as TextView
+        assignmentTxt = view.findViewById(R.id.assignmentsTab) as TextView
+        addAsgnBtn = view.findViewById(R.id.addAssignmentBtn) as Button //TODO link to assignment details page
+        date = view.findViewById(R.id.currentDate) as TextView
 
-        shareBtn.setOnClickListener{
-            //TODO: send assignment details to another user
+        date.text = Date().toString()
+
+        fun loadAsgnDetails(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, AssignmentDetailsFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
-        addAssignmentBtn.setOnClickListener {
-            //TODO: add a new assignment
-        }
-
-        currentDate.text = Date().toString()
+        addAsgnBtn.setOnClickListener{ loadAsgnDetails()}
 
         return view
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //TODO liveData, obeserver, updateUI
+    }
 
-        val titleWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-            }
 
-            override fun onTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                assignment.title = sequence.toString()
-            }
+    private fun updateUI(asgns: List<Assignment>){
+        adapter = AssignmentAdapter(asgns)
+        asgnRecyclerView.adapter = adapter
+    }
 
-            override fun afterTextChanged(sequence: Editable?) {}
+    private inner class AssignmentHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
+        private lateinit var asgn: Assignment
+
+        private val title: TextView = itemView.findViewById(R.id.assignmentTitle)
+        private val checkBox: CheckBox = itemView.findViewById(R.id.checkBox) //TODO make this update after checked in details
+        private val date: TextView = itemView.findViewById(R.id.date)
+        private val subject: TextView = itemView.findViewById(R.id.subjectTxt)
+
+        init {
+            itemView.setOnClickListener(this)
         }
-        assignmentTitle.addTextChangedListener(titleWatcher)
 
-        val subjectWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                assignment.subject = sequence.toString()
-            }
-
-            override fun afterTextChanged(sequence: Editable?) {}
+        fun bind(asgn: Assignment){
+            this.asgn = asgn
+            title.text = this.asgn.title
+            checkBox.isChecked = this.asgn.isCompleted
+            date.text = this.asgn.dueDate
+            subject.text = this.asgn.subject
         }
-        subjectText.addTextChangedListener(subjectWatcher)
 
-        val editDateWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                assignment.dueDate = sequence.toString()
-            }
-
-            override fun afterTextChanged(sequence: Editable?) {}
-        }
-        editDate.addTextChangedListener(editDateWatcher)
-
-        //TODO: This crashes the app when trying to check the box
-        checkBox.apply {
-            setOnCheckedChangeListener { _, isChecked ->
-                assignment.isCompleted = isChecked
-            }
+        override fun onClick(v: View?) {
+            //TODO implement this
         }
     }
 
-    private fun updateUI() {
-        checkBox.isChecked = assignment.isCompleted
+    private inner class AssignmentAdapter(var asgns: List<Assignment>): RecyclerView.Adapter<AssignmentHolder>(){
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssignmentHolder {
+            val view = layoutInflater.inflate(R.layout.list_item_assignment, parent, false)
+            return AssignmentHolder(view)
+        }
+
+        override fun getItemCount() = asgns.size
+
+        override fun onBindViewHolder(holder: AssignmentHolder, position: Int) {
+            val asgn = asgns[position]
+            holder.bind(asgn)
+        }
+
     }
+
 }

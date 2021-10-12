@@ -37,35 +37,35 @@ class HomeFragment : Fragment(){
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         fun logout(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, OpeningFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
         fun loadCurrentAssignment(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, AssignmentListFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
         fun loadCalendar(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, CalendarFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
         fun loadToDo(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, ToDoFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
         fun loadShared(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, SharedFragment())
             transaction.addToBackStack(null)
             transaction.commit()
