@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 private const val TAG = "OpeningViewModel"
 
 class OpeningViewModel : ViewModel(){
+
+    private val appRepository = AppRepository.get()
+
     init {
         Log.i(TAG, "OpeningViewModel instance created")
     }
