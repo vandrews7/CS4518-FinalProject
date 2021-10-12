@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
@@ -90,14 +91,18 @@ class LoginFragment : Fragment() {
         }
         enterPwd.addTextChangedListener(passwordWatcher)
 
-
+        // authenticate login
         login.setOnClickListener {
             val loginValid: LiveData<User?> = loginViewModel.login(emailString, passString)
             if(loginValid != null) {
-                //TODO: enable button
+                login.isClickable = true
             }
-            else {
-                //TODO: disable button
+            else { //make toast to let user know that login was incorrect
+                Toast.makeText(
+                    requireActivity(),
+                    R.string.login_failed,
+                    Toast.LENGTH_SHORT)
+                    .show()
             }
             loadHome()
         }

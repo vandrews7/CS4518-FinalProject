@@ -6,4 +6,5 @@
     <string name="inputPassword">Password</string>
     <string name="birthday">Birthday: MM/DD/YYYY</string>
     <string name="newPassword">New Password</string>
+    <string name="login_failed">Username or password is incorrect</string>
 </resources>
