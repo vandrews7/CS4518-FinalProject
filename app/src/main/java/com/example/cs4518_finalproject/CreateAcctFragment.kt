@@ -12,8 +12,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 
-private const val ARG_ACCT_ID = "acct_id"
-
 class CreateAcctFragment : Fragment() {
 
     private val createAcctViewModel : CreateAcctViewModel by lazy {
@@ -36,14 +34,23 @@ class CreateAcctFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_create_account, container, false)
 
-        fun loadHome(fragment: Fragment){
+        fun loadHome(){
             val transaction = activity!!.supportFragmentManager.beginTransaction()
-         // TODO:  transaction.replace(R.id.fragment_container, HomeFragment())
-            transaction.disallowAddToBackStack()
+            transaction.replace(R.id.fragment_container, HomeFragment())
+            transaction.addToBackStack(null)
             transaction.commit()
         }
 
         create = view.findViewById(R.id.createBtn) as Button
+        createAcctTxt = view.findViewById(R.id.createAcctTxt) as TextView
+        firstName = view.findViewById(R.id.firstName) as EditText
+        lastName = view.findViewById(R.id.lastName) as EditText
+        email = view.findViewById(R.id.inputEmail) as EditText
+        birthday = view.findViewById(R.id.birthday) as EditText
+        password = view.findViewById(R.id.newPassword) as EditText
+
+        create.setOnClickListener { loadHome() }
+
 
         return view
     }
@@ -92,6 +99,69 @@ class CreateAcctFragment : Fragment() {
             override fun afterTextChanged(sequence: Editable?) { }
         }
         lastName.addTextChangedListener(lastNameWatcher)
+
+        val emailWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) { }
+
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                user.email = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) { }
+        }
+        email.addTextChangedListener(emailWatcher)
+
+        val birthdayWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) { }
+
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                user.birthday = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) { }
+        }
+        birthday.addTextChangedListener(birthdayWatcher)
+
+        val passwordWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) { }
+
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                user.password = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) { }
+        }
+        password.addTextChangedListener(passwordWatcher)
     }
 }
 

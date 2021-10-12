@@ -9,16 +9,18 @@
 
     <TextView
         android:id="@+id/appName"
-        android:layout_width="316dp"
+        android:layout_width="315dp"
         android:layout_height="103dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="108dp"
         android:layout_marginEnd="48dp"
-        android:text="APP NAME"
+        android:text="wyd?"
         android:textAlignment="center"
         android:textColor="#000002"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

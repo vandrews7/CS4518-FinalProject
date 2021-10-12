@@ -1,5 +1,6 @@
 package com.example.cs4518_finalproject
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.vstechlab.easyfonts.EasyFonts
+import org.w3c.dom.Text
 import java.util.*
 
 private const val TAG = "OpeningFragment"
@@ -35,10 +38,17 @@ class OpeningFragment: Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_opening, container, false)
 
-        fun loadCreateAcct(fragment: Fragment){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+        fun loadCreateAcct(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, CreateAcctFragment())
-            transaction.disallowAddToBackStack()
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        fun loadLogin(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, LoginFragment())
+            transaction.addToBackStack(null)
             transaction.commit()
         }
 
@@ -46,9 +56,9 @@ class OpeningFragment: Fragment(){
         createAcctBtn = view.findViewById(R.id.createAcctBtn) as Button
         loginBtn = view.findViewById(R.id.loginPageBtn) as Button
 
-        createAcctBtn.setOnClickListener {
-            loadCreateAcct(CreateAcctFragment())
-        }
+        appName.setTypeface(EasyFonts.androidNation(context))
+        createAcctBtn.setOnClickListener { loadCreateAcct() }
+        loginBtn.setOnClickListener { loadLogin() }
 
 
         return view

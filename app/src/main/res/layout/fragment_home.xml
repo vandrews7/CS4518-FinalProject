@@ -7,16 +7,13 @@
 
     <TextView
         android:id="@+id/welcomeTxt"
-        android:layout_width="339dp"
+        android:layout_width="139dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="76dp"
-        android:layout_marginEnd="36dp"
-        android:text="Welcome 'user name'!"
+        android:text="Welcome "
         android:textAlignment="center"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +21,7 @@
         android:id="@+id/calendarBtn"
         android:layout_width="165dp"
         android:layout_height="55dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="#3F51B5"
         android:text="Calendar"
@@ -36,7 +33,7 @@
         android:id="@+id/currentAssignmentsBtn"
         android:layout_width="165dp"
         android:layout_height="55dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="74dp"
         android:backgroundTint="#3F51B5"
         android:text="Current Assignments"
@@ -49,36 +46,13 @@
         android:layout_width="165dp"
         android:layout_height="55dp"
         android:layout_marginTop="74dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="#3F51B5"
         android:text="To Do"
         android:textColor="#FDFCFC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTxt" />
 
-    <Button
-        android:id="@+id/groceryListBtn"
-        android:layout_width="165dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#3F51B5"
-        android:text="Grocery List"
-        android:textColor="#FDFCFC"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarBtn" />
-
-    <Button
-        android:id="@+id/notesBtn"
-        android:layout_width="165dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="36dp"
-        android:backgroundTint="#3F51B5"
-        android:text="Notes"
-        android:textColor="#FDFCFC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toDoBtn" />
 
     <Button
         android:id="@+id/logoutBtn"
@@ -106,30 +80,39 @@
         android:textColor="#FDFCFC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groceryListBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarBtn" />
 
     <Button
         android:id="@+id/sharedBtn"
         android:layout_width="165dp"
         android:layout_height="55dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="#3F51B5"
         android:text="Shared with me"
         android:textColor="#FDFCFC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notesBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/toDoBtn" />
 
-    <EditText
+    <TextView
         android:id="@+id/homeCurrentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
-        android:inputType="date"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTxt" />
+
+    <TextView
+        android:id="@+id/dispUserName"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
