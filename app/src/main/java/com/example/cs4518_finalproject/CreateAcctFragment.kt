@@ -23,7 +23,6 @@ class CreateAcctFragment : Fragment() {
     private lateinit var firstName: EditText
     private lateinit var lastName: EditText
     private lateinit var email: EditText
-    private lateinit var birthday: EditText
     private lateinit var password: EditText
     private lateinit var create: Button
 
@@ -35,7 +34,7 @@ class CreateAcctFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_create_account, container, false)
 
         fun loadHome(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, HomeFragment())
             transaction.addToBackStack(null)
             transaction.commit()
@@ -46,11 +45,8 @@ class CreateAcctFragment : Fragment() {
         firstName = view.findViewById(R.id.firstName) as EditText
         lastName = view.findViewById(R.id.lastName) as EditText
         email = view.findViewById(R.id.inputEmail) as EditText
-        birthday = view.findViewById(R.id.birthday) as EditText
         password = view.findViewById(R.id.newPassword) as EditText
-
         create.setOnClickListener { loadHome() }
-
 
         return view
     }
@@ -120,27 +116,6 @@ class CreateAcctFragment : Fragment() {
             override fun afterTextChanged(sequence: Editable?) { }
         }
         email.addTextChangedListener(emailWatcher)
-
-        val birthdayWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) { }
-
-            override fun onTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                user.birthday = sequence.toString()
-            }
-
-            override fun afterTextChanged(sequence: Editable?) { }
-        }
-        birthday.addTextChangedListener(birthdayWatcher)
 
         val passwordWatcher = object : TextWatcher {
             override fun beforeTextChanged(
