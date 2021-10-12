@@ -8,6 +8,8 @@ private const val TAG = "HomeViewModel"
 class HomeViewModel(): ViewModel() {
 
     private val appRepository = AppRepository.get()
+    private val userListLiveData = appRepository.getUsers()
+    private val assignmentListLiveData = appRepository.getAssignments()
 
     init {
         Log.i(TAG, "HomeViewModel instance created")

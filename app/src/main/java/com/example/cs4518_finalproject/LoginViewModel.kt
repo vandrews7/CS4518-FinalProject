@@ -8,6 +8,8 @@ private const val TAG = "LoginViewModel"
 class LoginViewModel(): ViewModel(){
 
     private val appRepository = AppRepository.get()
+    private val userListLiveData = appRepository.getUsers()
+    private val assignmentListLiveData = appRepository.getAssignments()
 
     init {
         Log.i(TAG, "LoginViewModel instance created")

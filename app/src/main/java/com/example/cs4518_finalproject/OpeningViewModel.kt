@@ -8,6 +8,8 @@ private const val TAG = "OpeningViewModel"
 class OpeningViewModel : ViewModel(){
 
     private val appRepository = AppRepository.get()
+    private val userListLiveData = appRepository.getUsers()
+    private val assignmentListLiveData = appRepository.getAssignments()
 
     init {
         Log.i(TAG, "OpeningViewModel instance created")
