@@ -12,6 +12,8 @@ private const val DATABASE_NAME = "main-database"
 
 class AppRepository private constructor(context: Context) {
 
+    //TODO: add appRepository to AssignmentDetailViewModel and override onStop() function to save updated assignment info (listing 12.16)
+
     private val database : MainDatabase = Room.databaseBuilder(
         context.applicationContext,
         MainDatabase::class.java,
