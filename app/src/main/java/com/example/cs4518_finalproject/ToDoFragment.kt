@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 private const val TAG = "ToDoFragment"
 
@@ -30,7 +31,7 @@ class ToDoFragment : Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "Total crimes") //TODO: need to link database for assignments.size (pg. 354)
+        Log.d(TAG, "Total toDos") //TODO: need to link database for toDos.size (pg. 354)
     }
 
     override fun onCreateView(
@@ -48,6 +49,11 @@ class ToDoFragment : Fragment(){
         checkBox = view.findViewById(R.id.toDoComplete) as CheckBox
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //TODO liveData, obeserver, updateUI
     }
 
     override fun onStart() {
@@ -77,8 +83,9 @@ class ToDoFragment : Fragment(){
         toDoTitle.addTextChangedListener(titleWatcher)
     }
 
-    private fun updateUI(toDo: List<ToDo>){
-
+    private fun updateUI(toDos: List<ToDo>){
+        adapter = ToDoAdapter(toDos)
+        toDoRecyclerView.adapter = adapter
     }
 
     private inner class ToDoHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
@@ -96,7 +103,7 @@ class ToDoFragment : Fragment(){
         }
 
         override fun onClick(v: View?) {
-            //TODO: implement this
+            //TODO: implement this if needed, not clicking for detailed view so maybe we dont?
         }
 
     }
@@ -114,6 +121,5 @@ class ToDoFragment : Fragment(){
             holder.bind(toDo)
         }
     }
-
 
 }
