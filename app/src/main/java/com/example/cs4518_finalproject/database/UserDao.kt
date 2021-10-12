@@ -20,7 +20,7 @@ interface UserDao {
     fun getUser(email: String): LiveData<User?>
 
     @Query("Select firstName from user where email=(:email)")
-    fun getUsername(email: String): String?
+    fun getUsername(email: String): LiveData<String?>
 
     @Insert
     fun addUser(user: User)

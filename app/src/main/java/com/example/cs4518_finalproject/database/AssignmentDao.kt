@@ -17,6 +17,12 @@ interface AssignmentDao {
     @Query("Select * from assignment where id=(:id)")
     fun getAssignment(id: UUID): LiveData<Assignment?>
 
+    @Query("Select * from assignment where isCompleted=(1)") //idk if this is right
+    fun getCompleted(): LiveData<List<Assignment>>
+
+    @Query("Select isCompleted from assignment where id=(:id)")
+    fun isCompleted(id: UUID): LiveData<Boolean>
+
     @Insert
     fun addAssignment(a: Assignment)
 
