@@ -9,14 +9,18 @@ import com.example.cs4518_finalproject.User
 
 @Dao
 interface UserDao {
-    @Query("Select * from user where (email=(:email) AND password=(:password))")
-    fun login(email: String, password: String): List<User?> //maybe this is right i have no idea we will have to mess with it
+
+    @Query("Select * from user")
+    fun getUsers(): LiveData<List<User>>
+
+    @Query("Select * from user where (email=(:email) AND password=(:password))") //this will be null if the user and password combo doesn't exist so
+    fun login(email: String, password: String): LiveData<User?> //in theory this is right
 
     @Query("Select * from user where email=(:email)") //this will be to share an assignment with another user, you just have to have their email
-    fun getUser(email: String): LiveData<List<User>>
+    fun getUser(email: String): LiveData<User?>
 
     @Query("Select firstName from user where email=(:email)")
-    fun getUsername(email: String): String
+    fun getUsername(email: String): String?
 
     @Insert
     fun addUser(user: User) //TODO: figure out how to add a user to the db user table

@@ -11,4 +11,6 @@ import com.example.cs4518_finalproject.User
 abstract class MainDatabase : RoomDatabase() {
 
     abstract fun assignmentDao(): AssignmentDao
+
+    abstract fun userDao(): UserDao
 }

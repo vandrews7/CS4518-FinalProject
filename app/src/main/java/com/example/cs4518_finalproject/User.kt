@@ -1,10 +1,11 @@
 package com.example.cs4518_finalproject
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity (primaryKeys = ["email" , "password"])
+@Entity
 class User (var firstName: String = "",
             var lastName: String = "",
-            var email: String = "",
+            @PrimaryKey var email: String = "",
             var password: String = ""){
 }
