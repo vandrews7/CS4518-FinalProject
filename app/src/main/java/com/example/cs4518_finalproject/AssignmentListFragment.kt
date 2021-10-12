@@ -10,11 +10,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import java.util.*
-
-private const val TAG = "AssignmentFragment"
-private const val REQUEST_CODE = 0
-private const val ARG_ASSIGN_ID = "assignment_id"
 
 class AssignmentListFragment: Fragment(){
 
@@ -32,14 +29,17 @@ class AssignmentListFragment: Fragment(){
     private lateinit var assignmentsTab: TextView
     private lateinit var addAssignmentBtn: Button
     private lateinit var currentDate: TextView
+   // TODO private lateinit var asgnRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         assignment = Assignment()
-        val assignmentID: UUID = arguments?.getSerializable(ARG_ASSIGN_ID) as UUID
-        Log.d(TAG, "arg bundle assignment ID: $assignmentID")
-        //TODO: make assignmentDetailViewModel
-        //assignmentDetailViewModel.loadAssignment(assignmentID)
+    }
+
+    companion object {
+        fun newInstance(): AssignmentListFragment{
+            return AssignmentListFragment()
+        }
     }
 
     override fun onCreateView(
@@ -67,11 +67,9 @@ class AssignmentListFragment: Fragment(){
             //TODO: add a new assignment
         }
 
-        return view
-    }
+        currentDate.text = Date().toString()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        return view
     }
 
     override fun onStart() {
@@ -127,7 +125,8 @@ class AssignmentListFragment: Fragment(){
                 start: Int,
                 count: Int,
                 after: Int
-            ) { }
+            ) {
+            }
 
             override fun onTextChanged(
                 sequence: CharSequence?,
@@ -138,15 +137,19 @@ class AssignmentListFragment: Fragment(){
                 assignment.dueDate = sequence.toString()
             }
 
-            override fun afterTextChanged(sequence: Editable?) { }
+            override fun afterTextChanged(sequence: Editable?) {}
         }
         editDate.addTextChangedListener(editDateWatcher)
 
-
+        //TODO: This crashes the app when trying to check the box
         checkBox.apply {
             setOnCheckedChangeListener { _, isChecked ->
                 assignment.isCompleted = isChecked
             }
         }
+    }
+
+    private fun updateUI() {
+        checkBox.isChecked = assignment.isCompleted
     }
 }

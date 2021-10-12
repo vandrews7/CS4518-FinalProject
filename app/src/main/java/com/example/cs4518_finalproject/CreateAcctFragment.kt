@@ -35,7 +35,7 @@ class CreateAcctFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_create_account, container, false)
 
         fun loadHome(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, HomeFragment())
             transaction.addToBackStack(null)
             transaction.commit()
