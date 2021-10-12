@@ -92,18 +92,20 @@ class LoginFragment : Fragment() {
         enterPwd.addTextChangedListener(passwordWatcher)
 
         // authenticate login
+        val loginValid: LiveData<User?> = loginViewModel.login(emailString, passString)
+        if(loginValid != null) {
+            login.isClickable = true
+        }
+        else { //make toast to let user know that login was incorrect
+            Toast.makeText(
+                requireActivity(),
+                R.string.login_failed,
+                Toast.LENGTH_SHORT)
+                .show()
+        }
+
         login.setOnClickListener {
-            val loginValid: LiveData<User?> = loginViewModel.login(emailString, passString)
-            if(loginValid != null) {
-                login.isClickable = true
-            }
-            else { //make toast to let user know that login was incorrect
-                Toast.makeText(
-                    requireActivity(),
-                    R.string.login_failed,
-                    Toast.LENGTH_SHORT)
-                    .show()
-            }
+            //not convinced that you need to do anything here since I do it outside right before this, but it actually might have to be in here i have no idea
             loadHome()
         }
 
