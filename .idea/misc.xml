@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/layout/fragment_photos.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_shared.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_to_do.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_todo_details.xml" value="0.335" />
         <entry key="app/src/main/res/layout/list_item_assignment.xml" value="0.12273550724637682" />
         <entry key="app/src/main/res/layout/list_item_photo.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_shared.xml" value="0.17916666666666667" />

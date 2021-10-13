@@ -38,6 +38,7 @@ class AssignmentDetailsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_assignment_details, container, false)
+        asgn = Assignment()
 
         asgnTitle = view.findViewById(R.id.assignmentTitleTxt) as EditText
         dueDateTxt = view.findViewById(R.id.detailsDueDateTxt) as TextView
@@ -50,14 +51,14 @@ class AssignmentDetailsFragment : Fragment(){
         detailsTxt = view.findViewById(R.id.detailsTxt) as TextView
         checkBox = view.findViewById(R.id.detailsCheckBox) as CheckBox //TODO make this work
         createAssignment = view.findViewById(R.id.createAssignment) as Button
+        asgn = Assignment()
 
         fun makeNewAssignment(){
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, AssignmentListFragment())
             transaction.addToBackStack(null)
             transaction.commit()
-
-            //TODO add new assignment to database
+            asgnDetailsViewModel.addAssignment(asgn) //this adds the assignment to the database
         }
 
         val titleWatcher = object : TextWatcher {
@@ -136,7 +137,9 @@ class AssignmentDetailsFragment : Fragment(){
         }
         notes.addTextChangedListener(notesWatcher)
 
-        createAssignment.setOnClickListener{makeNewAssignment()}
+        createAssignment.setOnClickListener{
+            makeNewAssignment()
+        }
 
 
         return view

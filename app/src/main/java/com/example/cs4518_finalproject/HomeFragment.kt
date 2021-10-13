@@ -71,6 +71,13 @@ class HomeFragment : Fragment(){
             transaction.commit()
         }
 
+        fun loadPhoto() {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, PhotoFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         welcome = view.findViewById(R.id.welcomeTxt) as TextView
         calendarBtn = view.findViewById(R.id.calendarBtn) as Button
         currentAsgnBtn = view.findViewById(R.id.currentAssignmentsBtn) as Button
@@ -89,6 +96,7 @@ class HomeFragment : Fragment(){
         todoBtn.setOnClickListener { loadToDo() }
         logout.setOnClickListener { logout() }
         shared.setOnClickListener { loadShared() }
+        photo.setOnClickListener{ loadPhoto() }
 
         return view
     }

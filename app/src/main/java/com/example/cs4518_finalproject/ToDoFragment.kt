@@ -24,6 +24,7 @@ class ToDoFragment : Fragment(){
     private lateinit var toDoRecyclerView: RecyclerView
     private lateinit var toDoTxt: TextView
     private lateinit var addToDoBtn: Button
+    private lateinit var home: Button
     private var adapter: ToDoAdapter? = ToDoAdapter(emptyList())
 
     private val toDoViewModel: ToDoViewModel by lazy {
@@ -32,7 +33,7 @@ class ToDoFragment : Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "Total toDos") //TODO: need to link database for toDos.size (pg. 354)
+        Log.d(TAG, "ToDo onCreate() called")
     }
 
     override fun onCreateView(
@@ -48,13 +49,39 @@ class ToDoFragment : Fragment(){
 
         toDoTxt = view.findViewById(R.id.toDoTxt) as TextView
         addToDoBtn = view.findViewById(R.id.addToDoBtn) as Button
+        home = view.findViewById(R.id.returnHome) as Button
+
+        fun loadToDoDetails(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, ToDoDetailsFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        fun loadHome(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, HomeFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        addToDoBtn.setOnClickListener{loadToDoDetails()}
+        home.setOnClickListener{loadHome()}
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO liveData, obeserver, updateUI
+        var toDoList = toDoViewModel.todoListLiveData
+        toDoList.observe(
+            viewLifecycleOwner,
+            {
+                toDoList.value?.let {
+                        it1 -> updateUI(it1)
+                }
+            }
+        )
     }
 
     override fun onStart() {
@@ -69,7 +96,7 @@ class ToDoFragment : Fragment(){
     private inner class ToDoHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         private lateinit var toDo: ToDo
 
-        private val toDoTitle: EditText = itemView.findViewById(R.id.toDoTitle)
+        private val title: TextView = itemView.findViewById(R.id.toDoTitle)
         private val checkBox: CheckBox = itemView.findViewById(R.id.toDoComplete)
 
         init {
@@ -78,10 +105,12 @@ class ToDoFragment : Fragment(){
 
         fun bind(toDo: ToDo){
             this.toDo = toDo //TODO: pretty sure more needs to go here, having trouble with EditText
+            title.text = this.toDo.title
+            checkBox.isChecked = this.toDo.isCompleted
         }
 
         override fun onClick(v: View?) {
-            //TODO: implement this if needed, not clicking for detailed view so maybe we dont?
+
         }
 
     }

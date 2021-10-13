@@ -24,6 +24,7 @@ class AssignmentListFragment: Fragment(){
     private lateinit var assignmentTxt: TextView
     private lateinit var addAsgnBtn: Button
     private lateinit var date: TextView
+    private lateinit var home: Button
     private var adapter: AssignmentAdapter? = AssignmentAdapter(emptyList())
 
     private val assignmentListViewModel: AssignmentListViewModel by lazy {
@@ -49,6 +50,8 @@ class AssignmentListFragment: Fragment(){
         assignmentTxt = view.findViewById(R.id.assignmentsTab) as TextView
         addAsgnBtn = view.findViewById(R.id.addAssignmentBtn) as Button //TODO link to assignment details page
         date = view.findViewById(R.id.currentDate) as TextView
+        home = view.findViewById(R.id.asgnReturnHome) as Button
+        asgn = Assignment()
 
         date.text = Date().toString()
 
@@ -59,14 +62,30 @@ class AssignmentListFragment: Fragment(){
             transaction.commit()
         }
 
+        fun loadHome(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, HomeFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         addAsgnBtn.setOnClickListener{ loadAsgnDetails()}
+        home.setOnClickListener{loadHome()}
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO liveData, obeserver, updateUI
+        var assignmentList = assignmentListViewModel.assignmentListLiveData
+        assignmentList.observe(
+            viewLifecycleOwner,
+            {
+                assignmentList.value?.let {
+                        it1 -> updateUI(it1)
+                }
+            }
+        )
     }
 
 

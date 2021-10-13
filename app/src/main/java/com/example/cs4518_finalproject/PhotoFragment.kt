@@ -40,9 +40,10 @@ class PhotoFragment : Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_photos, container, false)
 
-        photoRecyclerView = view.findViewById(R.id.photoRecyclerView) //TODO finish from pg. 862
+        photoRecyclerView = view.findViewById(R.id.photoRecyclerView)
         photoRecyclerView.layoutManager = GridLayoutManager (context, 3)
         photoBtn = view.findViewById(R.id.photoBtn) as ImageButton
+        photoUri = Uri.EMPTY
 
         return view
     }
@@ -95,6 +96,12 @@ class PhotoFragment : Fragment(){
                 startActivityForResult(captureImage, REQUEST_PHOTO)
             }
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        requireActivity().revokeUriPermission(photoUri,
+            Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
     }
 
     companion object{

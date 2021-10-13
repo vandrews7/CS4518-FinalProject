@@ -49,8 +49,6 @@ class LoginFragment : Fragment() {
         enterPwd = view.findViewById(R.id.editTextPassword) as EditText
         login = view.findViewById(R.id.loginBtn) as Button
 
-        //TODO: if email and pwd don't match existing user -> disable button
-        //TODO: if email and pwd match existing user -> enable button:
 
         val emailWatcher = object : TextWatcher {
             override fun beforeTextChanged(
