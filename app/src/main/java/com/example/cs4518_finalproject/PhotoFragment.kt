@@ -28,6 +28,7 @@ class PhotoFragment : Fragment(){
 
     private lateinit var photoRecyclerView: RecyclerView
     private lateinit var photoBtn: ImageButton
+    private lateinit var photoFile: File
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,7 +60,7 @@ class PhotoFragment : Fragment(){
                 PackageManager.MATCH_DEFAULT_ONLY)
 
             setOnClickListener{
-                captureImage.putExtra(MediaStore.EXTRA_OUTPUT, )
+              //  captureImage.putExtra(MediaStore.EXTRA_OUTPUT, )
             }
         }
     }

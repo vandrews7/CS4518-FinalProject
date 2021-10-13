@@ -14,4 +14,12 @@ class PhotoViewModel : ViewModel(){
         super.onCleared()
         Log.i(TAG, "PhotoViewModel instance is about to be destroyed")
     }
+
+//    fun savePhoto(photo:Photo){
+//        AppRepository.update
+//    }
+//
+//    fun getPhotoFile(photo: Photo): File {
+//        return AppRepository.getP
+//    } //TODO finish this, pg. 591
 }
