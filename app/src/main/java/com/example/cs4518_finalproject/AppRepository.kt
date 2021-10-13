@@ -85,6 +85,16 @@ class AppRepository private constructor(context: Context) {
         }
     }
 
+    private val photoDao = database.photoDao()
+
+    fun getPhotos(): LiveData<List<Photo>> = photoDao.getPhotos()
+    fun getPhoto(id: UUID): LiveData<Photo?> = photoDao.getPhoto(id)
+    fun addPhoto(photo: Photo) {
+        executor.execute {
+            photoDao.addPhoto(photo)
+        }
+    }
+
     companion object {
         private var INSTANCE: AppRepository? = null
 

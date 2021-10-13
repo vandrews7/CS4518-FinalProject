@@ -20,4 +20,6 @@ abstract class MainDatabase : RoomDatabase() {
 
     abstract fun todoDao(): TodoDao
 
+    abstract fun photoDao(): PhotoDao
+
 }
