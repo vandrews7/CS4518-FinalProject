@@ -10,7 +10,7 @@ import java.util.*
 @Dao
 interface PhotoDao {
     @Query("Select * from photo")
-    fun getPhotos(): LiveData<List<Photo>>
+    fun getPhotos(): LiveData<Photo>
 
     @Query("Select * from photo where id=(:id)")
     fun getPhoto(id: UUID): LiveData<Photo?>

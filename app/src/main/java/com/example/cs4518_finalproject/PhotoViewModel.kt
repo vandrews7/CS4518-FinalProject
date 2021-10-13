@@ -6,6 +6,14 @@ import androidx.lifecycle.ViewModel
 private const val TAG = "PhotoViewModel"
 
 class PhotoViewModel : ViewModel(){
+
+    private val appRepository = AppRepository.get()
+    val userListLiveData = appRepository.getUsers()
+    val assignmentListLiveData = appRepository.getAssignments()
+    val sharedListLiveData = appRepository.getAllShared()
+    val todoListLiveData = appRepository.getToDos()
+    val photoLiveData = appRepository.getPhotos()
+
     init {
         Log.i(TAG, "PhotoViewModel instance created")
     }
