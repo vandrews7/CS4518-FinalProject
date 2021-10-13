@@ -51,6 +51,7 @@ class AssignmentDetailsFragment : Fragment(){
         detailsTxt = view.findViewById(R.id.detailsTxt) as TextView
         checkBox = view.findViewById(R.id.detailsCheckBox) as CheckBox //TODO make this work
         createAssignment = view.findViewById(R.id.createAssignment) as Button
+        asgn = Assignment()
 
         fun makeNewAssignment(){
             val transaction = requireActivity().supportFragmentManager.beginTransaction()

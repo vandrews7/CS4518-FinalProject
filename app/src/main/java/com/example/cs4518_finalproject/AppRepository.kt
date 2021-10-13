@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.example.cs4518_finalproject.database.MainDatabase
+import java.io.File
 import java.lang.IllegalStateException
 import java.util.*
 import java.util.concurrent.Executors
@@ -22,6 +23,7 @@ class AppRepository private constructor(context: Context) {
 
     private val executor = Executors.newSingleThreadExecutor()
     private val userDao = database.userDao()
+    private val filesDir = context.applicationContext.filesDir
 
     fun getUsers() = userDao.getUsers()
     fun checkLogin(email: String, password: String): LiveData<User?> = userDao.checkLogin(email, password)
@@ -77,6 +79,17 @@ class AppRepository private constructor(context: Context) {
             todoDao.updateToDo(todo)
         }
     }
+
+    private val photoDao = database.photoDao()
+
+    fun getPhotos(): LiveData<Photo> = photoDao.getPhotos()
+    fun getPhoto(id: UUID): LiveData<Photo?> = photoDao.getPhoto(id)
+    fun addPhoto(photo: Photo) {
+        executor.execute {
+            photoDao.addPhoto(photo)
+        }
+    }
+    fun getPhotoFile(photo: Photo): File = File(filesDir, photo.photoFileName)
 
     companion object {
         private var INSTANCE: AppRepository? = null

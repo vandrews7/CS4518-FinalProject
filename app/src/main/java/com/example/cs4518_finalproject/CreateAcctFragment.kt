@@ -1,5 +1,6 @@
 package com.example.cs4518_finalproject
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -152,7 +153,6 @@ class CreateAcctFragment : Fragment() {
             override fun afterTextChanged(sequence: Editable?) { }
         }
         password.addTextChangedListener(passwordWatcher)
-
     }
 }
 
