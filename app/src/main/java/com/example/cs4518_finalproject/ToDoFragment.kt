@@ -24,6 +24,7 @@ class ToDoFragment : Fragment(){
     private lateinit var toDoRecyclerView: RecyclerView
     private lateinit var toDoTxt: TextView
     private lateinit var addToDoBtn: Button
+    private lateinit var home: Button
     private var adapter: ToDoAdapter? = ToDoAdapter(emptyList())
 
     private val toDoViewModel: ToDoViewModel by lazy {
@@ -48,6 +49,7 @@ class ToDoFragment : Fragment(){
 
         toDoTxt = view.findViewById(R.id.toDoTxt) as TextView
         addToDoBtn = view.findViewById(R.id.addToDoBtn) as Button
+        home = view.findViewById(R.id.returnHome) as Button
 
         fun loadToDoDetails(){
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -56,7 +58,15 @@ class ToDoFragment : Fragment(){
             transaction.commit()
         }
 
+        fun loadHome(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, HomeFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         addToDoBtn.setOnClickListener{loadToDoDetails()}
+        home.setOnClickListener{loadHome()}
 
         return view
     }
