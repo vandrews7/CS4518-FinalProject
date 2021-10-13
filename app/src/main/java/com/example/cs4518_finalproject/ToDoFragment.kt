@@ -104,7 +104,7 @@ class ToDoFragment : Fragment(){
         }
 
         fun bind(toDo: ToDo){
-            this.toDo = toDo //TODO: pretty sure more needs to go here, having trouble with EditText
+            this.toDo = toDo
             title.text = this.toDo.title
             checkBox.isChecked = this.toDo.isCompleted
         }

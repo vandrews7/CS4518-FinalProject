@@ -27,5 +27,5 @@ class PhotoViewModel() : ViewModel(){
 
     fun getPhotoFile(photo: Photo): File {
         return appRepository.getPhotoFile(photo)
-    } //TODO finish this, pg. 591
+    }
 }

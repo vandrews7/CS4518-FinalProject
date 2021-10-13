@@ -66,7 +66,6 @@ class PhotoFragment : Fragment(){
     }
 
     private fun updateUI() {
-        //TODO: put stuff here
     }
 
     override fun onStart() {

@@ -52,9 +52,9 @@ class AssignmentDetailsFragment : Fragment(){
         subject = view.findViewById(R.id.detailsSubject) as EditText
         notes = view.findViewById(R.id.detailsNotes) as EditText
         sharedWithTxt = view.findViewById(R.id.sharedWith) as TextView
-        collabEmail = view.findViewById(R.id.collaboratorEmail) as TextView //TODO implement so it displays collaborator's emails
+        collabEmail = view.findViewById(R.id.collaboratorEmail) as TextView
         detailsTxt = view.findViewById(R.id.detailsTxt) as TextView
-        checkBox = view.findViewById(R.id.detailsCheckBox) as CheckBox //TODO make this work
+        checkBox = view.findViewById(R.id.detailsCheckBox) as CheckBox
         createAssignment = view.findViewById(R.id.createAssignment) as Button
         asgn = Assignment()
 
@@ -84,25 +84,6 @@ class AssignmentDetailsFragment : Fragment(){
             override fun afterTextChanged(sequence: Editable?) { }
         }
         asgnTitle.addTextChangedListener(titleWatcher)
-
-//        val dueDateWatcher = object : TextWatcher { //TODO change to dialog
-//            override fun beforeTextChanged(
-//                sequence: CharSequence?,
-//                start: Int,
-//                count: Int,
-//                after: Int
-//            ) { }
-//
-//            override fun onTextChanged(
-//                sequence: CharSequence?,
-//                start: Int,
-//                before: Int,
-//                count: Int
-//            ) { asgn.dueDate = sequence.toString() }
-//
-//            override fun afterTextChanged(sequence: Editable?) { }
-//        }
-//        dueDate.addTextChangedListener(dueDateWatcher)
 
         val subjectWatcher = object : TextWatcher {
             override fun beforeTextChanged(

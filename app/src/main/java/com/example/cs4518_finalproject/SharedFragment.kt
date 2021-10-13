@@ -26,7 +26,7 @@ class SharedFragment : Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "Total shared assignments") //TODO: need to link database for assignments.size (pg. 354)
+        Log.d(TAG, "Total shared assignments")
     }
 
     override fun onCreateView(
@@ -40,20 +40,16 @@ class SharedFragment : Fragment(){
         sharedRecyclerView.layoutManager = LinearLayoutManager(context)
         sharedRecyclerView.adapter = adapter
 
-        //TODO instantiate layout widgets
-
         return view
     }
 
     override fun onStart() {
         super.onStart()
 
-        //TODO titleWatchers etc.
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO liveData, observer, updateUI etc.
     }
 
     private fun updateUI(sharedAsgns: List<SharedAssignment>){
@@ -66,7 +62,6 @@ class SharedFragment : Fragment(){
 
         private val sharedTitle: TextView = itemView.findViewById(R.id.assignmentTitle)
 
-        //TODO: do we need this if not clicking for detailed view?
 
         init {
             itemView.setOnClickListener(this)
@@ -77,7 +72,6 @@ class SharedFragment : Fragment(){
         }
 
         override fun onClick(v: View?) {
-            //TODO: implement if needed
         }
     }
 

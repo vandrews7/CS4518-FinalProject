@@ -16,7 +16,7 @@ class AssignmentListViewModel: ViewModel(){
         Log.i(TAG, "AssignmentListViewModel instance created")
         for (i in 0 until 100) {
             val assignment = Assignment()
-            assignment.title = "" //TODO
+            assignment.title = ""
             assignment.isCompleted = i % 2 == 0
             assignments += assignment
         }

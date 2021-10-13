@@ -28,7 +28,6 @@ class OpeningFragment: Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //TODO: what else needs to be done here?
     }
 
     override fun onCreateView(

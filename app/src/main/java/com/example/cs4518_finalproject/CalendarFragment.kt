@@ -108,7 +108,6 @@ class CalendarFragment : Fragment(){
         }
 
         override fun onClick(v: View?) {
-            //TODO implement this
         }
     }
 

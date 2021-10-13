@@ -33,7 +33,7 @@ class AssignmentListFragment: Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "Total assignments") //TODO link database for size
+        Log.d(TAG, "Total assignments")
     }
 
     override fun onCreateView(
@@ -48,7 +48,7 @@ class AssignmentListFragment: Fragment(){
         asgnRecyclerView.adapter = adapter
 
         assignmentTxt = view.findViewById(R.id.assignmentsTab) as TextView
-        addAsgnBtn = view.findViewById(R.id.addAssignmentBtn) as Button //TODO link to assignment details page
+        addAsgnBtn = view.findViewById(R.id.addAssignmentBtn) as Button
         date = view.findViewById(R.id.currentDate) as TextView
         home = view.findViewById(R.id.asgnReturnHome) as Button
         asgn = Assignment()
@@ -88,7 +88,6 @@ class AssignmentListFragment: Fragment(){
         )
     }
 
-
     private fun updateUI(asgns: List<Assignment>){
         adapter = AssignmentAdapter(asgns)
         asgnRecyclerView.adapter = adapter
@@ -115,7 +114,6 @@ class AssignmentListFragment: Fragment(){
         }
 
         override fun onClick(v: View?) {
-            //TODO implement this
         }
     }
 
