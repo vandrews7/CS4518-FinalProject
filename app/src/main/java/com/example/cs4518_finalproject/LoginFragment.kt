@@ -3,6 +3,7 @@ package com.example.cs4518_finalproject
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
+
+private const val TAG = "LoginFragment"
 
 class LoginFragment : Fragment() {
 
@@ -92,21 +95,25 @@ class LoginFragment : Fragment() {
         enterPwd.addTextChangedListener(passwordWatcher)
 
 
-        val loginValid: LiveData<User?> = loginViewModel.login(emailString, passString)
-        if(loginValid != null) {
-            login.isEnabled = true
-        }
-        else { //make toast to let user know that login was incorrect
-            Toast.makeText(
-                requireActivity(),
-                R.string.login_failed,
-                Toast.LENGTH_SHORT)
-                .show()
-        }
-
         login.setOnClickListener {
             // authenticate login
-            loadHome()
+            val loginValid: LiveData<User?> = loginViewModel.checkLogin(emailString, passString)
+            loginValid.observe(
+                viewLifecycleOwner,
+                {
+                    user -> user?.let {
+                            Log.d(TAG, "login is valid")
+                            loadHome()
+                    }
+                    if(user == null) {
+                        Toast.makeText(
+                            requireActivity(),
+                            R.string.login_failed,
+                            Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            )
         }
 
         return view
@@ -114,7 +121,6 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        login.isEnabled = false
     }
 
 }
