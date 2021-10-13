@@ -5,80 +5,102 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/activityTitleTxt"
+    <EditText
+        android:id="@+id/assignmentTitleTxt"
         android:layout_width="201dp"
         android:layout_height="57dp"
-        android:text="Activity Title"
+        android:layout_marginStart="105dp"
+        android:layout_marginEnd="105dp"
+        android:hint="Assignment Title"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="106dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/detailsDueDateTxt"
         android:layout_width="96dp"
         android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="71dp"
         android:text="Due Date:"
-        tools:layout_editor_absoluteY="61dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/detailsDueDate"
         android:layout_width="307dp"
-        android:layout_height="30dp"
-        android:text="due date"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="61dp" />
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
+        android:hint="MM-DD-YYYY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/assignmentTitleTxt" />
 
     <TextView
         android:id="@+id/detailsSubjectTxt"
-        android:layout_width="96dp"
+        android:layout_width="86dp"
         android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="32dp"
         android:text="Subject:"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDueDateTxt" />
 
-    <TextView
+    <EditText
         android:id="@+id/detailsSubject"
         android:layout_width="307dp"
-        android:layout_height="30dp"
-        android:text="activity subject"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="113dp" />
+        android:layout_height="50dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="13dp"
+        android:hint="Assignment subject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detailsSubjectTxt"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDueDate" />
 
     <EditText
         android:id="@+id/detailsNotes"
         android:layout_width="407dp"
         android:layout_height="194dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="240dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsTxt" />
 
     <TextView
         android:id="@+id/sharedWith"
         android:layout_width="96dp"
         android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="21dp"
         android:text="Shared With:"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="455dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsNotes" />
 
     <TextView
         android:id="@+id/collaboratorEmail"
         android:layout_width="400dp"
         android:layout_height="32dp"
-        android:text="collaborator email"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="485dp" />
+        android:layout_marginStart="2dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sharedWith" />
 
     <TextView
         android:id="@+id/detailsTxt"
         android:layout_width="96dp"
         android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="65dp"
         android:text="Details/Notes:"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsSubjectTxt" />
 
     <CheckBox
         android:id="@+id/detailsCheckBox"
@@ -89,5 +111,27 @@
         android:text="Completed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsSubject" />
+
+    <Button
+        android:id="@+id/shareBtn"
+        android:layout_width="172dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="5dp"
+        android:text="Share Assignment"
+        app:layout_constraintBottom_toTopOf="@+id/collaboratorEmail"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/createAssignment"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="121dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="10dp"
+        android:text="Create Assignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,9 +22,8 @@ private const val TAG = "ToDoFragment"
 class ToDoFragment : Fragment(){
 
     private lateinit var toDoRecyclerView: RecyclerView
-    private lateinit var toDo: ToDo
-    private lateinit var toDoTitle: EditText
-    private lateinit var checkBox: CheckBox
+    private lateinit var toDoTxt: TextView
+    private lateinit var addToDoBtn: Button
     private var adapter: ToDoAdapter? = ToDoAdapter(emptyList())
 
     private val toDoViewModel: ToDoViewModel by lazy {
@@ -45,8 +46,8 @@ class ToDoFragment : Fragment(){
         toDoRecyclerView.layoutManager = LinearLayoutManager(context)
         toDoRecyclerView.adapter = adapter
 
-        toDoTitle = view.findViewById(R.id.toDoTitle) as EditText
-        checkBox = view.findViewById(R.id.toDoComplete) as CheckBox
+        toDoTxt = view.findViewById(R.id.toDoTxt) as TextView
+        addToDoBtn = view.findViewById(R.id.addToDoBtn) as Button
 
         return view
     }
@@ -58,29 +59,6 @@ class ToDoFragment : Fragment(){
 
     override fun onStart() {
         super.onStart()
-
-        val titleWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                toDo.title = sequence.toString()
-            }
-
-            override fun afterTextChanged(sequence: Editable?) {}
-        }
-
-        toDoTitle.addTextChangedListener(titleWatcher)
     }
 
     private fun updateUI(toDos: List<ToDo>){
@@ -91,7 +69,7 @@ class ToDoFragment : Fragment(){
     private inner class ToDoHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         private lateinit var toDo: ToDo
 
-        private val toDoTitlePrivate: EditText = itemView.findViewById(R.id.toDoTitle)
+        private val toDoTitle: EditText = itemView.findViewById(R.id.toDoTitle)
         private val checkBox: CheckBox = itemView.findViewById(R.id.toDoComplete)
 
         init {

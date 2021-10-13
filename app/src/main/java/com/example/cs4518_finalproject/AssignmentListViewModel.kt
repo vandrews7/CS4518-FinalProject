@@ -3,10 +3,9 @@ package com.example.cs4518_finalproject
 import android.util.Log
 import androidx.lifecycle.ViewModel
 
-private const val TAG = "AssignmentViewModel"
+private const val TAG = "AssignmentListViewModel"
 
-class AssignmentViewModel: ViewModel(){
-
+class AssignmentListViewModel: ViewModel(){
     private val appRepository = AppRepository.get()
     val userListLiveData = appRepository.getUsers()
     val assignmentListLiveData = appRepository.getAssignments()
@@ -16,7 +15,7 @@ class AssignmentViewModel: ViewModel(){
     val assignments = mutableListOf<Assignment>()
 
     init{
-        Log.i(TAG, "AssignmentViewModel instance created")
+        Log.i(TAG, "AssignmentListViewModel instance created")
         for (i in 0 until 100) {
             val assignment = Assignment()
             assignment.title = "" //TODO
@@ -27,7 +26,7 @@ class AssignmentViewModel: ViewModel(){
 
     override fun onCleared() {
         super.onCleared()
-        Log.i(TAG, "AssignmentViewModel instance is about to be destroyed")
+        Log.i(TAG, "AssignmentListViewModel instance is about to be destroyed")
     }
 
 }
