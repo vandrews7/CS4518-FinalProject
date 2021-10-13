@@ -91,10 +91,10 @@ class LoginFragment : Fragment() {
         }
         enterPwd.addTextChangedListener(passwordWatcher)
 
-        // authenticate login
+
         val loginValid: LiveData<User?> = loginViewModel.login(emailString, passString)
         if(loginValid != null) {
-            login.isClickable = true
+            login.isEnabled = true
         }
         else { //make toast to let user know that login was incorrect
             Toast.makeText(
@@ -105,7 +105,7 @@ class LoginFragment : Fragment() {
         }
 
         login.setOnClickListener {
-            //not convinced that you need to do anything here since I do it outside right before this, but it actually might have to be in here i have no idea
+            // authenticate login
             loadHome()
         }
 
@@ -114,6 +114,7 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        login.isEnabled = false
     }
 
 }

@@ -137,8 +137,7 @@ class CreateAcctFragment : Fragment() {
             override fun afterTextChanged(sequence: Editable?) { }
         }
         password.addTextChangedListener(passwordWatcher)
-
-        // i think this might be only thing we need to do? idk tho
+        
         createAcctViewModel.addUser(user)
     }
 }
