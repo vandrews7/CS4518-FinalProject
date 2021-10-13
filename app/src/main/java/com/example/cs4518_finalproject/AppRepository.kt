@@ -26,7 +26,7 @@ class AppRepository private constructor(context: Context) {
     private val filesDir = context.applicationContext.filesDir
 
     fun getUsers() = userDao.getUsers()
-    fun login(email: String, password: String): LiveData<User?> = userDao.login(email, password)
+    fun checkLogin(email: String, password: String): LiveData<User?> = userDao.checkLogin(email, password)
     fun getUser(email: String): LiveData<User?> = userDao.getUser(email)
     fun getUsername(email: String): LiveData<String?> = userDao.getUsername(email)
     fun addUser(user: User) {

@@ -13,7 +13,7 @@ class LoginViewModel(): ViewModel(){
     val sharedListLiveData = appRepository.getAllShared()
     val todoListLiveData = appRepository.getToDos()
 
-    fun login(email: String, password: String) = appRepository.login(email, password)
+    fun checkLogin(email: String, password: String) = appRepository.checkLogin(email, password)
 
     init {
         Log.i(TAG, "LoginViewModel instance created")
