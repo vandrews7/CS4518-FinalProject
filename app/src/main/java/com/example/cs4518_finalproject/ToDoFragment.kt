@@ -49,6 +49,15 @@ class ToDoFragment : Fragment(){
         toDoTxt = view.findViewById(R.id.toDoTxt) as TextView
         addToDoBtn = view.findViewById(R.id.addToDoBtn) as Button
 
+        fun loadToDoDetails(){
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container, ToDoDetailsFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        addToDoBtn.setOnClickListener{loadToDoDetails()}
+
         return view
     }
 
@@ -69,7 +78,7 @@ class ToDoFragment : Fragment(){
     private inner class ToDoHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         private lateinit var toDo: ToDo
 
-        private val toDoTitle: EditText = itemView.findViewById(R.id.toDoTitle)
+        private val title: TextView = itemView.findViewById(R.id.toDoTitle)
         private val checkBox: CheckBox = itemView.findViewById(R.id.toDoComplete)
 
         init {
@@ -78,6 +87,8 @@ class ToDoFragment : Fragment(){
 
         fun bind(toDo: ToDo){
             this.toDo = toDo //TODO: pretty sure more needs to go here, having trouble with EditText
+            title.text = this.toDo.title
+            checkBox.isChecked = this.toDo.isCompleted
         }
 
         override fun onClick(v: View?) {
