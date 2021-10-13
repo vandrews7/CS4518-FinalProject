@@ -32,6 +32,8 @@ class ToDoDetailsFragment : Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_todo_details, container, false)
 
+        toDo = ToDo()
+
         toDoTitle = view.findViewById(R.id.toDoTitle) as EditText
         checkBox = view.findViewById(R.id.toDoComplete) as CheckBox
         makeToDo = view.findViewById(R.id.makeToDo) as Button
@@ -42,7 +44,7 @@ class ToDoDetailsFragment : Fragment(){
             transaction.addToBackStack(null)
             transaction.commit()
 
-            //TODO add new todo to database
+            toDoDetailsViewModel.addToDo(toDo)
         }
 
         val titleWatcher = object : TextWatcher {
