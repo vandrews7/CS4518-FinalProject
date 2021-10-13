@@ -50,12 +50,12 @@ class PhotoFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        photoViewModel.photoListLiveData.observe(
+        photoViewModel.photoLiveData.observe(
             viewLifecycleOwner,
             Observer { photo ->
                 photo?.let {
-                    this.photo = photo[0]
-                    photoFile = photoViewModel.getPhotoFile(photo[0])
+                    this.photo = photo
+                    photoFile = photoViewModel.getPhotoFile(photo)
                     photoUri = FileProvider.getUriForFile(requireActivity(),
                         "com.example.cs4518_finalproject.fileprovider",
                         photoFile)

@@ -89,7 +89,7 @@ class AppRepository private constructor(context: Context) {
 
     private val photoDao = database.photoDao()
 
-    fun getPhotos(): LiveData<List<Photo>> = photoDao.getPhotos()
+    fun getPhotos(): LiveData<Photo> = photoDao.getPhotos()
     fun getPhoto(id: UUID): LiveData<Photo?> = photoDao.getPhoto(id)
     fun addPhoto(photo: Photo) {
         executor.execute {
