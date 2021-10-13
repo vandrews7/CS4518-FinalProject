@@ -1,7 +1,7 @@
 # CS4518-FinalProject
 # Veronica Andrews (vjandrews@wpi.edu) and Maranda Allen (mmallen@wpi.edu)
 
-Welcome to WYD? our organization application designed to help keep students on track!
+Welcome to WYD? our organization application designed to help keep students on track! (WYD? stands for "What You Doin'?")
 
 For our final project we decided to create an organization app for students that would allow students to track assignments and group partners, due dates, and create a ToDo list.
 
@@ -19,9 +19,7 @@ One design achievement that we used was using the CalendarView widget for our ca
 The second design achievement that we implemented was part of the fragment navigation, where when you go back a page it goes back to the previous fragment because it was added to the backstack. This design was intentional to make it easier to navigate the application. This satisfies the second design achievement.
 
 One technical achievement that we implemented was being able to click on the different dates of the calendar in the calendar view.
-Our final technical achievement is the implementation of the login screen. The screen does not move on to the next page if the username and password combination does not already exist in the database. Otherwise, it will display a toast that says the username or password is wrong.
-We used this same technical method for the create account page, where it will not give a user access until all fields are filled in.
-This technical implementation satisfies the last technical requirement for the project.
+Our final technical achievement is the Dialog we used for selecting the due date of an assignment. This satisfies the last technical achievement of the project.
 
 One problem that we had was implementing the sharing feature. Our original goal was to be able to share the assignment details with group members for group projects. Not the actual assignment would be attached, just the title, due date, and other relevant information.
 Because of the time constraints, we were unable to implement the feature, but it would have been completed using the User table and the Assignment table in our relational database.
