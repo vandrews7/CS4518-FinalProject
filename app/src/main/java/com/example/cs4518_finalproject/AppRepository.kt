@@ -40,8 +40,6 @@ class AppRepository private constructor(context: Context) {
         }
     }
 
-    fun getPhotoFile(photo: Photo): File = File(filesDir, photo.photoFileName)
-
     private val assignmentDao = database.assignmentDao()
 
     fun getAssignments(): LiveData<List<Assignment>> = assignmentDao.getAssignments()
@@ -98,6 +96,7 @@ class AppRepository private constructor(context: Context) {
             photoDao.addPhoto(photo)
         }
     }
+    fun getPhotoFile(photo: Photo): File = File(filesDir, photo.photoFileName)
 
     companion object {
         private var INSTANCE: AppRepository? = null
