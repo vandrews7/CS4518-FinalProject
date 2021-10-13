@@ -7,4 +7,5 @@
     <string name="birthday">Birthday: MM/DD/YYYY</string>
     <string name="newPassword">New Password</string>
     <string name="login_failed">Username or password is incorrect</string>
+    <string name="create_failed">One of the required fields is missing</string>
 </resources>

@@ -13,7 +13,10 @@ class CreateAcctViewModel(): ViewModel(){
     val sharedListLiveData = appRepository.getAllShared()
     val todoListLiveData = appRepository.getToDos()
 
-    fun addUser(user: User) = appRepository.addUser(user)
+    fun addUser(user: User) {
+        Log.d(TAG, "user is being added to user table in database")
+        appRepository.addUser(user)
+    }
 
     init {
         Log.i(TAG, "CreateAcctViewModel instance created")

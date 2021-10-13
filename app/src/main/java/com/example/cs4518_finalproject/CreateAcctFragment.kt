@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 
@@ -46,13 +47,27 @@ class CreateAcctFragment : Fragment() {
         lastName = view.findViewById(R.id.lastName) as EditText
         email = view.findViewById(R.id.inputEmail) as EditText
         password = view.findViewById(R.id.newPassword) as EditText
-        create.setOnClickListener { loadHome() }
+
+        create.setOnClickListener {
+            if(user.password != "" && user.firstName != "" && user.lastName != "" && user.email != "") {
+                createAcctViewModel.addUser(user)
+                loadHome()
+            }
+            else {
+                Toast.makeText(
+                    requireActivity(),
+                    R.string.create_failed,
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
 
         return view
     }
 
     override fun onStart() {
         super.onStart()
+        user = User()
 
         val firstNameWatcher = object : TextWatcher {
             override fun beforeTextChanged(
@@ -137,8 +152,7 @@ class CreateAcctFragment : Fragment() {
             override fun afterTextChanged(sequence: Editable?) { }
         }
         password.addTextChangedListener(passwordWatcher)
-        
-        createAcctViewModel.addUser(user)
+
     }
 }
 
