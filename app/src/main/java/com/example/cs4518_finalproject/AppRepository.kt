@@ -25,16 +25,9 @@ class AppRepository private constructor(context: Context) {
 
     fun getUsers() = userDao.getUsers()
     fun checkLogin(email: String, password: String): LiveData<User?> = userDao.checkLogin(email, password)
-    fun getUser(email: String): LiveData<User?> = userDao.getUser(email)
-    fun getUsername(email: String): LiveData<String?> = userDao.getUsername(email)
     fun addUser(user: User) {
         executor.execute {
             userDao.addUser(user)
-        }
-    }
-    fun updateUser(user: User) {
-        executor.execute {
-            userDao.updateUser(user)
         }
     }
 
