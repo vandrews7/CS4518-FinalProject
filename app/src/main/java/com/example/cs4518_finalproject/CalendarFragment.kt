@@ -67,7 +67,15 @@ class CalendarFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO liveData, obeserver, updateUI
+        var assignmentList = calendarViewModel.getAssignmentsFromDate(selectedDate.toString())
+        assignmentList.observe(
+            viewLifecycleOwner,
+            {
+                assignmentList.value?.let {
+                        it1 -> updateUI(it1)
+                }
+            }
+        )
     }
 
     override fun onStart() {

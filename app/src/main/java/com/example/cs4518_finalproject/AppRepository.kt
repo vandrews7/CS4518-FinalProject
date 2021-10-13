@@ -13,8 +13,6 @@ private const val DATABASE_NAME = "main-database"
 
 class AppRepository private constructor(context: Context) {
 
-    //TODO: add appRepository to AssignmentDetailViewModel and override onStop() function to save updated assignment info (listing 12.16)
-
     private val database : MainDatabase = Room.databaseBuilder(
         context.applicationContext,
         MainDatabase::class.java,
@@ -36,8 +34,7 @@ class AppRepository private constructor(context: Context) {
     private val assignmentDao = database.assignmentDao()
 
     fun getAssignments(): LiveData<List<Assignment>> = assignmentDao.getAssignments()
-    fun getAssignment(id: UUID): LiveData<Assignment?> = assignmentDao.getAssignment(id)
-    fun getCompleted(): LiveData<List<Assignment>> = assignmentDao.getCompleted()
+    fun getAssignmentsFromDate(date: String): LiveData<List<Assignment>> = assignmentDao.getAssignmentsFromDate(date)
     fun isCompleted(id: UUID): LiveData<Boolean> = assignmentDao.isCompleted(id)
     fun addAssignment(a: Assignment) {
         executor.execute {

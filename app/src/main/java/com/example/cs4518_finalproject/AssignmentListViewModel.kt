@@ -8,10 +8,7 @@ private const val TAG = "AssignmentListViewModel"
 
 class AssignmentListViewModel: ViewModel(){
     private val appRepository = AppRepository.get()
-    val userListLiveData = appRepository.getUsers()
     val assignmentListLiveData: LiveData<List<Assignment>> = appRepository.getAssignments()
-    val sharedListLiveData = appRepository.getAllShared()
-    val todoListLiveData = appRepository.getToDos()
 
     val assignments = mutableListOf<Assignment>()
 
