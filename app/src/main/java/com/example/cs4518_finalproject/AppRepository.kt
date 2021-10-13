@@ -50,17 +50,6 @@ class AppRepository private constructor(context: Context) {
     private val sharedDao = database.sharedDao()
 
     fun getAllShared(): LiveData<List<SharedAssignment>> = sharedDao.getAllShared()
-    fun getShared(id: UUID): LiveData<SharedAssignment?> = sharedDao.getShared(id)
-    fun addShared(shared: SharedAssignment) {
-        executor.execute {
-            sharedDao.addShared(shared)
-        }
-    }
-    fun updatedShared(shared: SharedAssignment) {
-        executor.execute {
-            sharedDao.updateShared(shared)
-        }
-    }
 
     private val todoDao = database.todoDao()
 
