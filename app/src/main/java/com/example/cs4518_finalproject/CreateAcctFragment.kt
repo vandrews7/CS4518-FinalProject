@@ -51,7 +51,6 @@ class CreateAcctFragment : Fragment() {
 
         create.setOnClickListener { loadHome() }
 
-
         return view
     }
 
