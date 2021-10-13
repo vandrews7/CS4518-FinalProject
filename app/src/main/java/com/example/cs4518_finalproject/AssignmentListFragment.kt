@@ -77,7 +77,15 @@ class AssignmentListFragment: Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO liveData, obeserver, updateUI
+        var assignmentList = assignmentListViewModel.assignmentListLiveData
+        assignmentList.observe(
+            viewLifecycleOwner,
+            {
+                assignmentList.value?.let {
+                        it1 -> updateUI(it1)
+                }
+            }
+        )
     }
 
 

@@ -43,6 +43,7 @@ class AssignmentDetailsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_assignment_details, container, false)
+        asgn = Assignment()
 
         asgnTitle = view.findViewById(R.id.assignmentTitleTxt) as EditText
         dueDateBtn = view.findViewById(R.id.chooseDueDate) as Button
@@ -62,8 +63,7 @@ class AssignmentDetailsFragment : Fragment(){
             transaction.replace(R.id.fragment_container, AssignmentListFragment())
             transaction.addToBackStack(null)
             transaction.commit()
-
-            //TODO add new assignment to database
+            asgnDetailsViewModel.addAssignment(asgn) //this adds the assignment to the database
         }
 
         val titleWatcher = object : TextWatcher {
@@ -142,7 +142,9 @@ class AssignmentDetailsFragment : Fragment(){
         }
         notes.addTextChangedListener(notesWatcher)
 
-        createAssignment.setOnClickListener{makeNewAssignment()}
+        createAssignment.setOnClickListener{
+            makeNewAssignment()
+        }
 
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {

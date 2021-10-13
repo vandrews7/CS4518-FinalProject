@@ -33,7 +33,7 @@ class ToDoFragment : Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "Total toDos") //TODO: need to link database for toDos.size (pg. 354)
+        Log.d(TAG, "ToDo onCreate() called")
     }
 
     override fun onCreateView(
@@ -73,7 +73,15 @@ class ToDoFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO liveData, obeserver, updateUI
+        var toDoList = toDoViewModel.todoListLiveData
+        toDoList.observe(
+            viewLifecycleOwner,
+            {
+                toDoList.value?.let {
+                        it1 -> updateUI(it1)
+                }
+            }
+        )
     }
 
     override fun onStart() {
@@ -102,7 +110,7 @@ class ToDoFragment : Fragment(){
         }
 
         override fun onClick(v: View?) {
-            //TODO: implement this if needed, not clicking for detailed view so maybe we dont?
+
         }
 
     }
