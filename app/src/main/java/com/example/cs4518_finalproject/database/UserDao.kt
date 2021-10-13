@@ -14,7 +14,7 @@ interface UserDao {
     fun getUsers(): LiveData<List<User>>
 
     @Query("Select * from user where (email=(:email) AND password=(:password))") //this will be null if the user and password combo doesn't exist so
-    fun login(email: String, password: String): LiveData<User?> //in theory this is right
+    fun checkLogin(email: String, password: String): LiveData<User?> //in theory this is right
 
     @Query("Select * from user where email=(:email)") //this will be to share an assignment with another user, you just have to have their email
     fun getUser(email: String): LiveData<User?>
