@@ -20,23 +20,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/detailsDueDateTxt"
-        android:layout_width="96dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="71dp"
-        android:text="Due Date:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
         android:id="@+id/detailsDueDate"
-        android:layout_width="307dp"
+        android:layout_width="207dp"
         android:layout_height="50dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="5dp"
-        android:hint="MM-DD-YYYY"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/chooseDueDate"
         app:layout_constraintTop_toBottomOf="@+id/assignmentTitleTxt" />
 
     <TextView
@@ -47,7 +38,7 @@
         android:layout_marginTop="32dp"
         android:text="Subject:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsDueDateTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseDueDate" />
 
     <EditText
         android:id="@+id/detailsSubject"
@@ -133,5 +124,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/chooseDueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="58dp"
+        android:text="Due Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
