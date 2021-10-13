@@ -6,6 +6,13 @@ import androidx.lifecycle.ViewModel
 private const val TAG = "SharedViewModel"
 
 class SharedViewModel : ViewModel(){
+
+    private val appRepository = AppRepository.get()
+    val userListLiveData = appRepository.getUsers()
+    val assignmentListLiveData = appRepository.getAssignments()
+    val sharedListLiveData = appRepository.getAllShared()
+    val todoListLiveData = appRepository.getToDos()
+
     init {
         Log.i(TAG, "SharedViewModel instance created")
     }

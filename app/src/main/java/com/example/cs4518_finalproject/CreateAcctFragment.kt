@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 
@@ -23,7 +24,6 @@ class CreateAcctFragment : Fragment() {
     private lateinit var firstName: EditText
     private lateinit var lastName: EditText
     private lateinit var email: EditText
-    private lateinit var birthday: EditText
     private lateinit var password: EditText
     private lateinit var create: Button
 
@@ -46,16 +46,28 @@ class CreateAcctFragment : Fragment() {
         firstName = view.findViewById(R.id.firstName) as EditText
         lastName = view.findViewById(R.id.lastName) as EditText
         email = view.findViewById(R.id.inputEmail) as EditText
-        birthday = view.findViewById(R.id.birthday) as EditText
         password = view.findViewById(R.id.newPassword) as EditText
 
-        create.setOnClickListener { loadHome() }
+        create.setOnClickListener {
+            if(user.password != "" && user.firstName != "" && user.lastName != "" && user.email != "") {
+                createAcctViewModel.addUser(user)
+                loadHome()
+            }
+            else {
+                Toast.makeText(
+                    requireActivity(),
+                    R.string.create_failed,
+                    Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
 
         return view
     }
 
     override fun onStart() {
         super.onStart()
+        user = User()
 
         val firstNameWatcher = object : TextWatcher {
             override fun beforeTextChanged(
@@ -119,27 +131,6 @@ class CreateAcctFragment : Fragment() {
             override fun afterTextChanged(sequence: Editable?) { }
         }
         email.addTextChangedListener(emailWatcher)
-
-        val birthdayWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) { }
-
-            override fun onTextChanged(
-                sequence: CharSequence?,
-                start: Int,
-                before: Int,
-                count: Int
-            ) {
-                user.birthday = sequence.toString()
-            }
-
-            override fun afterTextChanged(sequence: Editable?) { }
-        }
-        birthday.addTextChangedListener(birthdayWatcher)
 
         val passwordWatcher = object : TextWatcher {
             override fun beforeTextChanged(

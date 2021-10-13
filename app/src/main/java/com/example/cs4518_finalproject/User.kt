@@ -1,11 +1,11 @@
 package com.example.cs4518_finalproject
 
-import java.util.*
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-class User (val id: UUID = UUID.randomUUID(),
-            var firstName: String = "",
+@Entity
+data class User (var firstName: String = "",
             var lastName: String = "",
-            var email: String = "",
-            var birthday: String = "",
+            @PrimaryKey var email: String = "",
             var password: String = ""){
 }

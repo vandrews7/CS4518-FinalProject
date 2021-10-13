@@ -1,13 +1,17 @@
 package com.example.cs4518_finalproject
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProviders
 
 class LoginFragment : Fragment() {
@@ -27,9 +31,11 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
+        var emailString: String = ""
+        var passString: String = ""
 
         fun loadHome(){
-            val transaction = activity!!.supportFragmentManager.beginTransaction()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container, HomeFragment())
             transaction.addToBackStack(null)
             transaction.commit()
@@ -42,15 +48,73 @@ class LoginFragment : Fragment() {
 
         //TODO: if email and pwd don't match existing user -> disable button
         //TODO: if email and pwd match existing user -> enable button:
-        login.setOnClickListener { loadHome() }
+
+        val emailWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) { }
+
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                emailString = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) { }
+        }
+        enterEmail.addTextChangedListener(emailWatcher)
+
+        val passwordWatcher = object : TextWatcher {
+            override fun beforeTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) { }
+
+            override fun onTextChanged(
+                sequence: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                passString = sequence.toString()
+            }
+
+            override fun afterTextChanged(sequence: Editable?) { }
+        }
+        enterPwd.addTextChangedListener(passwordWatcher)
+
+
+        val loginValid: LiveData<User?> = loginViewModel.login(emailString, passString)
+        if(loginValid != null) {
+            login.isEnabled = true
+        }
+        else { //make toast to let user know that login was incorrect
+            Toast.makeText(
+                requireActivity(),
+                R.string.login_failed,
+                Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        login.setOnClickListener {
+            // authenticate login
+            loadHome()
+        }
 
         return view
     }
 
     override fun onStart() {
         super.onStart()
-
-
+        login.isEnabled = false
     }
 
 }
