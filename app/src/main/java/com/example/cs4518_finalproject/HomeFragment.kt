@@ -27,7 +27,6 @@ class HomeFragment : Fragment(){
     private lateinit var photo: Button
     private lateinit var shared: Button
     private lateinit var currentDateTxt: TextView
-    private lateinit var dispUserName: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,10 +85,8 @@ class HomeFragment : Fragment(){
         photo = view.findViewById(R.id.takePhotoBtn) as Button
         shared = view.findViewById(R.id.sharedBtn) as Button
         currentDateTxt = view.findViewById(R.id.homeCurrentDate) as TextView
-        dispUserName = view.findViewById(R.id.dispUserName) as TextView
 
         currentDateTxt.text = Date().toString()
-        dispUserName.text = User().firstName
 
         calendarBtn.setOnClickListener { loadCalendar() }
         currentAsgnBtn.setOnClickListener { loadCurrentAssignment() }
